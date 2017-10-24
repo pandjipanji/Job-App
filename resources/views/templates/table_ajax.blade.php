@@ -25,8 +25,10 @@
                                 $color = "teal";
                             }
                         @endphp
+                    
+                    {!! Form::open(array('route' => array('admin.destroy', $val->id), 'method' => 'delete')) !!}
                     <td>
-                        <a href="/download/{!! $file_name['1'] !!}">Download</a>
+                        <a href="/download/{!! $file_name['1'] !!}" class="grey-text"><i class="small material-icons">file_download</i></a>
                     </td>
                     <td>
                         <a href="#modal{{!! $val->userdetail->id !!}}" class="btn btn-small {!! $color !!} waves-effect waves-light modal-trigger">
@@ -37,9 +39,10 @@
                         <a href="#modal{{!! $val->userdetail->id !!}}" class="btn-floating btn-small waves-effect waves-light modal-trigger">
                             <i class="large material-icons">mode_edit</i>
                         </a>   |
-                        <a href="#" class="btn-floating red btn-small waves-effect waves-light">
+                        <button type ="submit" class="btn-floating red btn-small waves-effect waves-light" onclick="return confirm('Sure want to delete this data?')">
                             <i class="large material-icons">delete_forever</i>
-                        </a>
+                        </button>
+                        {!! Form::close() !!}
                     </td>
                 </tr>
 <!--Materialize Modal-->

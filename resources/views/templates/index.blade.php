@@ -11,12 +11,13 @@
         <link href="{{asset('fonts/roboto/Roboto-Regular.woff2')}}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <style>
-        #toast-container {
-            top: auto !important;
-            right: auto !important;
-            bottom: 10%;
-            left:7%;
-        }
+            #toast-container {
+                top: auto !important;
+                right: auto !important;
+                bottom: 10%;
+                left:7%;
+            }
+            
         </style>
     </head>
     <body style="background-color:rgb(226, 226, 226)">

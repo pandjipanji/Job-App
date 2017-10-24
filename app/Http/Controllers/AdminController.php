@@ -102,7 +102,18 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //dd($id);
+        $userdetail = UserDetail::where('user_id',$id)->delete();
+        $user = User::destroy($id);
+
+        if ($userdetail && $user) {
+            Session::flash('notice','Deleted successfuly');
+            return redirect()->route('admin.index');
+        } else {
+            Session::flash('error','Fail to delete!!');
+            return redirect()->route('admin.index');
+        }
+        
     }
 
     public function show_user($id){
