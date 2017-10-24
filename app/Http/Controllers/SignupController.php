@@ -35,9 +35,10 @@ class SignupController extends Controller
             'gender' => $request->gender,
             'phone' => $request->phone
         ]);
-        //$default_role = Sentinel::findRoleByName('Writer');   
-
-        //$default_user->roles()->attach($default_role);    
+        
+        
+        $default_role = Sentinel::findRoleByName('applicant');   
+        $default_user->roles()->attach($default_role);    
         Session::flash('notice', 'Successfuly Registered, Please login');
         return redirect('/');
     }

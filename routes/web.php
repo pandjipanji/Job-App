@@ -21,11 +21,11 @@ Route::put('submission/{id}','UsersController@app_submission')->name('app_submis
 
 //admin
 Route::resource('admin','AdminController');
-Route::get('/show/{id}','AdminController@show_user');
-Route::get('/download/{file}','AdminController@download');
+Route::get('/show/{id}','AdminController@show_user')->name('show_user');
+Route::get('/download/{file}','AdminController@download')->name('file_download');
 //ajax
-Route::post('/status/get','AdminController@status_get');
-Route::post('/change_status/{id}','AdminController@change_status');
+Route::post('/status/get','AdminController@status_get')->name('get_status');
+Route::post('/change_status/{id}','AdminController@change_status')->name('change_status');
 
 
 Route::get('signup', 'SignupController@signup')->name('signup');
