@@ -16,9 +16,19 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->name,
+        'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Task::class, function (Faker\Generator $faker) {
+    $users = App\User::pluck('id')->toArray();
+    return [
+        'name' => $faker->unique()->name,
+        'description' => $faker->text,
+        'user_id' => $faker->randomElement($users)
     ];
 });

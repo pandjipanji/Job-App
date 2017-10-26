@@ -12,17 +12,18 @@
                         </div>
                         <div class="card grey lighten-4">
                         <div class="collection">
-                            <a href="#!" class="collection-item"><span class="new badge red" data-badge-caption="New unread Application">{!! $count !!}</span>Attention!!</a> 
+                            <a href="#!" class="collection-item brown-text"><span class="new badge red" data-badge-caption="New unread Application">{!! $count !!}</span>Attention!!</a> 
                         </div>
                             <div class="input-field col m4" style="margin-top:40px;">
-                            <select id="select_stats">
+                            <select autofocus id="select_stats">
+                                    <option value="all">All </option>
                                     <option value="unread">Unread </option>
                                     <option value="approved">Approved</option>
                                     <option value="rejected">Rejected</option>
                                 </select>
                                 <label>Choose Options</label>
                             </div>
-                        <table class="centered responsive-table" id="table_ajax">
+                        <table class="centered responsive-table striped" id="table_ajax">
                                     <thead>
                                       <tr>
                                           <th>Name</th>
@@ -35,7 +36,7 @@
 
                                     <tbody>
                                         @foreach ($applications as $val)
-                                            @if ($val->first_name != 'admin' && $val->userdetail->file != null)
+                                            @if ($val['first_name'] != 'admin' && $val->userdetail['file'] != null)
                                                 <tr>
                                                     <td>{!! $val->first_name." ".$val->last_name !!}</td>
                                                     <td>{!! $val->email !!}</td>

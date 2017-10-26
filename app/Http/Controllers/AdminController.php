@@ -151,11 +151,16 @@ class AdminController extends Controller
     public function status_get(Request $request){
         //dd($request->status);
         $status = $request->status;
+
+        if($status == "all"){
+            $application = User::with('userdetail')->get();
+        } else {
             $application = User::with(array('userdetail' => function($query) use ($status)
             {
                 $query->where('user_details.status',$status);
                 $query->orderBy('user_details.created_at','DESC');
             }))->get();
+        }
             //dd($application);
             return view('templates.table_ajax')->with('applications',$application);
     }
