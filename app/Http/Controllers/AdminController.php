@@ -131,14 +131,32 @@ class AdminController extends Controller
     public function change_status(Request $request, $id){
         try{
             //dd($request->status);
-            $update = UserDetail::find($id)->update([
+            UserDetail::find($id)->update([
                 'status' => $request->status
             ]);
-            Session::flash('notice','Changed Succesfuly');
-            return redirect()->route('admin.index');
+            $flash = 'Changed Succesfuly';
+            if($request->status == "approved"){
+                $add = "green";
+                $remove1 = "red";
+            } elseif($request->status == "rejected"){
+                $add = "red";
+                $remove1 = "green";
+            }
+            $status = $request->status;
+            $remove2 = "teal";
+
+            return response()->json([
+                'flash' => $flash, 
+                'id'=>$id, 
+                'status' => $status,
+                'add' => $add,
+                'remove1' => $remove1,
+                'remove2' => $remove2
+            ]);
+            //return redirect()->route('admin.index');
         } catch(\Exception $e) {
             Session::flash('error','Failed to Change');
-            return redirect()->route('admin.index');
+            //return redirect()->route('admin.index');
         }
         
     }

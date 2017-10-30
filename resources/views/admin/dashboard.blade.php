@@ -56,8 +56,8 @@
                                                         <a href="/download/{!! $file_name['1'] !!}" class="grey-text"><i class="small material-icons">file_download</i></a>
                                                     </td>
                                                     <td>
-                                                        <a href="#modal{{!! $val->userdetail->id !!}}" class="btn btn-small {!! $color !!} waves-effect waves-light modal-trigger">
-                                                            {!! $val->userdetail->status !!}
+                                                        <a href="#modal{!! $val->userdetail->id !!}" id="status{!! $val->userdetail->id!!}" class="btn btn-small {!! $color !!} waves-effect waves-light modal-trigger">
+                                                            <span id="stats{!! $val->userdetail->id !!}">{!! $val->userdetail->status !!}</span>
                                                         </a>
                                                     </td>
                                                     <td>
@@ -66,13 +66,13 @@
                                                         </a>   |
                                                         <button type ="submit" class="btn-floating red btn-small waves-effect waves-light" onclick="return confirm('Sure want to delete this data?')">
                                                                 <i class="large material-icons">delete_forever</i>
-                                                            </button>
+                                                        </button>
                                                         {!! Form::close() !!}
                                                         
                                                     </td>
                                                 </tr>
                                                 <!--Materialize Modal-->
-                                            <div id="modal{{!! $val->userdetail->id !!}}" class="modal modal-fixed-footer">
+                                                <div id="modal{!! $val->userdetail->id !!}" class="modal modal-fixed-footer">
                                             {!! Form::open() !!}
                                                     <div class="modal-content">                                                    
                                                     <h5>Change Status</h5>

@@ -96,13 +96,17 @@
                 $('#status_value').val(status);
                     $.ajax({
                     type : "POST",
+                    dataType : 'json',
                     url : "/change_status/"+id,
                     data:{
                         'status' : status
                     },
                     success: function(success){
-                        $('.modal').modal('close');
-                         return location.reload();
+                        $('a#status'+success['id']).removeClass(success['remove1']).removeClass(success['remove2']).addClass(success['add']);    
+                        document.getElementById('stats'+success['id']).innerHTML = success['status'];
+                        $('#modal'+success['id']).modal('close');
+                        Materialize.toast(success['flash'],6000,'green');
+                            //return location.reload();
                     }
                     });
             }
