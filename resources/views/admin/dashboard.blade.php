@@ -37,7 +37,7 @@
                                     <tbody>
                                         @foreach ($applications as $val)
                                             @if ($val['first_name'] != 'admin' && $val->userdetail['file'] != null)
-                                                <tr>
+                                                <tr id="row{!! $val->userdetail->id !!}">
                                                     <td>{!! $val->first_name." ".$val->last_name !!}</td>
                                                     <td>{!! $val->email !!}</td>
                                                     @php
@@ -67,6 +67,11 @@
                                                         <button type ="submit" class="btn-floating red btn-small waves-effect waves-light" onclick="return confirm('Sure want to delete this data?')">
                                                                 <i class="large material-icons">delete_forever</i>
                                                         </button>
+                                                        
+                                                        <!--<a href="#" class="btn-floating red btn-small waves-effect waves-light" onclick="delete({!! $val->userdetail->id !!})">
+                                                            <i class="large material-icons">delete_forever</i>
+                                                        </a>
+                                                        -->
                                                         {!! Form::close() !!}
                                                         
                                                     </td>

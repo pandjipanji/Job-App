@@ -110,6 +110,10 @@
                     }
                     });
             }
+
+            function delete(id){
+                
+            }
         
     </script>
 </html>
